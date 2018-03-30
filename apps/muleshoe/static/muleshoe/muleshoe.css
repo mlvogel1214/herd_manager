@@ -1,0 +1,75 @@
+#wrapper{
+    background-color: black;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    max-width: 1600px;
+}
+#navbar{
+    margin: 0px;
+    background-color: black;
+}
+#mid{
+    background-image: url('./ranch11.jpg');
+    height:700px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    padding-top: 20%;
+    margin: 0px;
+}
+span{
+    vertical-align: middle;
+    color: #b1adad;
+    position: absolute;
+    top: 40%;
+    bottom: 50%;
+    left: 38%;
+}
+#footer{
+    padding-top: 5px;
+    text-align: center;
+    background-color: black;
+}
+address{
+    margin: 0px;
+    padding: 0px;
+    color: #b1adad;
+}
+@media screen and (max-width: 992px){
+    span{
+        top: 30%;
+        left: 32%;
+    }
+}
+@media screen and (max-width: 600px){
+    span{
+        top: 43%;
+        left: 23%;
+    }
+    span h1{
+        font-size: 26px;
+    }
+    span h3{
+        font-size: 17px;
+    }
+    #mid{
+        height: 524px;
+        background-size: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #navbar a{
+        font-size: 10px;
+        padding: 0px;
+    }
+    .navbar-header a{
+        height: 18px;
+    }
+    .navbar-brand {
+        height: 18px;
+    }
+}

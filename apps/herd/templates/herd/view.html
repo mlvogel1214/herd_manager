@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>View</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% load static %}
+        <link rel="icon" href="{% static './muleshoe/img_3.jpg' %}">
+        <link rel="stylesheet" href="{% static './herd/view.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="background">
+            <div class="view">
+                {% if animals %}
+                <h3>You are viewing {{animals.species}} # {{animals.tag}}</h3>
+                {%endif%}
+                <ul>
+                    <li><b>Sex:</b> {{animals.sex}}</li>
+                    <li><b>Tag Number:</b> {{animals.tag}}</li>
+                    <li><b>Date of Birth:</b> {{animals.date_of_birth}}</li>
+                </ul>
+            </div>
+            <div class="wrapper container-fluid" id="form_wrapper">
+                {% if animals.species == 'DOG' %}
+                <h3>Add Puppy:</h3>
+                {% elif animals.species == 'COW' %}
+                <h3>Add Calf</h3>
+                {% elif animals.species == 'GOAT' %}
+                <h3>Add Kid</h3>
+                {% else %}
+                <h3>Add Offspring:</h3>
+                {% endif %}
+                <form action="{% url 'herd:addRelated' %}" method="post">
+                    {% csrf_token %}
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="species" value="{{animals.species}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="item">Sex:</label>
+                    <input type="text" class="form-control" name="sex">
+                </div>
+                <div class="form-group">
+                    <label for="item">Tag #:</label>
+                    <input type="text" class="form-control" name="tag">
+                </div>
+                <div class="form-group">
+                    <label for="item">Sire Tag#:</label>
+                    <input type="text" class="form-control" name="sire">
+                </div>
+                <div class="form-group">
+                    Animal Date of Birth:
+                    <input type="date" name="date_of_birth">
+                </div>
+                <div class="form-group">
+                    
+                    <input type="hidden" class="form-control" name="id" value="{{animals.id}}" readonly>
+                </div>
+                <button type="submit" class="btn btn-default">Add Offspring</button>
+                </form>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }} red"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="container-fluid" id="table">
+                {% if animals.species == 'DOG' %}
+                <h3>Puppies</h3>
+                {% elif animals.species == 'COW' %}
+                <h3>Calves</h3>
+                {% elif animals.species == 'GOAT' %}
+                <h3>Kids</h3>
+                {% else %}
+                <h3>Add Offspring:</h3>
+                {% endif %}
+
+                {%if offspring%}
+                <table class="table ">
+                   <tr>
+                        <th>Tag Number</th>
+                        <th>Species</th>
+                        <th>Sex</th>
+                        <th>Date of Birth</th>
+                        <th>Sire</th>
+                    </tr>
+                    {% for child in offspring%}
+                    <tr>
+                        <td>{{child.tag}}</td>
+                        <td>{{child.species}}</td>
+                        <td>{{child.sex}}</td>
+                        <td>{{child.date_of_birth}}</td>
+                        <td>{{child.sire_id}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% elif dadOffspring %}
+                <table class="table ">
+                    <tr>
+                         <th>Tag Number</th>
+                         <th>Species</th>
+                         <th>Sex</th>
+                         <th>Date of Birth</th>
+                         <th>Mother (ID #)</th>
+                     </tr>
+                     {% for child in dadOffspring%}
+                     <tr>
+                         <td>{{child.tag}}</td>
+                         <td>{{child.species}}</td>
+                         <td>{{child.sex}}</td>
+                         <td>{{child.date_of_birth}}</td>
+                         <td>{{child.animal_id}}</td>
+                     </tr>
+                     {% endfor %}
+                 </table>
+                {%else%}
+                    <h4>No Offspring Currently</h4>
+                {%endif%}
+            </div>
+            <div class="footer">
+                <a href="{% url 'herd:dashboard' %}"><span>Home</span></a>  |  <a href="{% url 'muleshoe:home' %}"><span>Logout</span></a>
+            </div>
+        </div>
+    </body>
+</html>

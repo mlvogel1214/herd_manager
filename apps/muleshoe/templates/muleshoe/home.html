@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome</title>
+        <title>MuleShoe Ranch</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% load static %}
+        <link rel="icon" href="{% static './muleshoe/img_3.jpg' %}">
+        <link rel="stylesheet" href="{% static './muleshoe/muleshoe.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="{% static './muleshoe/normalize.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+      <div id="wrapper" >
+        <!-- NavBar -->
+          <nav class="navbar navbar-inverse" id="navbar">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand">MuleShoe Ranch</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li><a href="{% url 'muleshoe:about' %}">About</a></li>
+                <li><a href="{% url 'users:index' %}">Admin</a></li>
+              </ul>
+            </div>
+          </nav>
+              <!-- bigining of mid content-->
+          <div class="container-fluid" id="mid">
+              <span><h1>MuleShoe Ranch</h1> 
+              <h3>Mayhill, New Mexico</h3></span>     
+          </div>
+          <div class="container-fluid" id="footer">
+            <address>Contact Us At: (575)-687-3534</address>
+            <address>404 Bear Canyon Rd Mayhill, NM 88339</address>
+          </div>
+      </div>
+    </body>
+</html>

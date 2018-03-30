@@ -1,0 +1,12 @@
+#table{
+    overflow: auto;
+    height: 800px;
+}
+a{
+    text-shadow:.25px .25px black;
+    margin-left: 10px;
+    font-size: 15px;
+}
+#add_wrapper{
+    width: 500px;
+}

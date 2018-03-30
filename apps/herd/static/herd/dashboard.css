@@ -1,0 +1,38 @@
+#wrapper{
+    padding: 10px;
+    background-image: url('./ranch2.jpg');
+    height: 700px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#table{
+    margin-top: 20px;
+    background-color: #8c856b;
+    opacity: .69;
+    color: black;
+    border-radius: 2px 2px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    height: 350px;
+    overflow: auto;
+}
+span{
+    font-size: 22px;
+    color: black;
+}
+.link{
+    font-size: 20px;
+    padding: 10px;
+    
+}
+p{
+    color: black;
+    font-weight: 500;
+    font-size: 30px;
+}
+.title{
+    color: black;
+    font-weight: 500;
+    font-size: 40px;
+}

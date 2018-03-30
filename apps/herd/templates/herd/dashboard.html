@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dashboard</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% load static %}
+        <link rel="icon" href="{% static './muleshoe/img_3.jpg' %}">
+        <link rel="stylesheet" href="{% static './herd/dashboard.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="wrapper">
+            <p class="title">Hello, {{loggedin.first_name}}</p>
+            {% if loggedin.first_name == 'Lorraine' or loggedin.first_name == 'Mike' %}   
+            <a href="{% url 'muleshoe:home' %}"><span class="link">Logout</span></a>  |  <a href="{% url 'users:create_new' %}"><span class="link">Register a New User</span></a>
+            {% else %}
+            <a href="{% url 'muleshoe:home' %}"><span class="link">Logout</span></a>
+            {% endif %}
+            <p>Current Animals</p>
+            <div class="container-fluid" id="table">
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tag Number</th>
+                        <th>Species</th>
+                        <th>Sex</th>
+                        <th>Date of Birth</th>
+                        <th>Actions</th>
+                    </tr>
+                {% for animal in animals%}
+                    <tr>
+                        <td>{{animal.id}}</td>
+                        <td>{{animal.tag}}</td>
+                        <td>{{animal.species}}</td>
+                        <td>{{animal.sex}}</td>
+                        <td>{{animal.date_of_birth}}</td>
+                        <td><a href="/view/{{ animal.id }}"><span>View</span></a> | <a href="/delete/{{ animal.id }}"><span>Delete</span></a> </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+            <a href="{% url 'herd:add' %}"><span class="link">Add a New Animal</span></a>      
+        </div>
+    </body>
+</html>

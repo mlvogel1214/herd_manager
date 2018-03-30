@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="icon" href="{% static './muleshoe/img_3.jpg' %}">
+    <link rel="stylesheet" href="{% static './muleshoe/about.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>MuleShoe Ranch</title>
+</head>
+<body>
+    <div id="wrapper" class="container-fluid">
+        <!-- NavBar -->
+        <nav class="navbar navbar-inverse" id="navbar">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a  href="{% url 'muleshoe:home' %}" class="navbar-brand">MuleShoe Ranch</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li><a href="{% url 'muleshoe:about' %}">About</a></li>
+                <li><a href="{% url 'users:index' %}">Admin</a></li>
+              </ul>
+            </div>
+          </nav>
+        <div id="content" class="container-fluid">
+            <p>MuleShoe Ranch is a cow calf operation originally founded in the 1920's. The ranch is located in the beautiful Sacramento Mountains of New Mexico, on 360 acres, adjacent to the historic Camp Mary White.  The ranch features an apple orchard, pond with trout and bass, main house, and several small outbuildings.  The ranch has recently added horses and goats to the operation.  </p>
+        </div>
+            <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 11</div>
+                <img src="{% static './muleshoe/ranch1.jpg' %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 11</div>
+                <img src="{% static './muleshoe/ranch2.jpg' %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 11</div>
+                <img src="{% static './muleshoe/ranch3.jpg' %}" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 11</div>
+                <img src="{% static './muleshoe/ranch4.jpg' %}" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 11</div>
+                <img src="{% static './muleshoe/ranch7.jpg' %}" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">6 / 11</div>
+                <img src="{% static './muleshoe/ranch10.jpg' %}" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">7 / 11</div>
+                <img src="{% static './muleshoe/ranch11.jpg' %}" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">8 / 11</div>
+                <img src="{% static './muleshoe/ranch12.jpg' %}" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">9 / 10</div>
+                <img src="{% static './muleshoe/ranch14.jpg' %}" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">10 / 10</div>
+                <img src="{% static './muleshoe/ranch15.jpg' %}" style="width:100%">
+            </div>
+        </div>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
+            <span class="dot" onclick="currentSlide(9)"></span>
+            <span class="dot" onclick="currentSlide(10)"></span>
+        </div>
+    </div>
+    <script>
+        var slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+               slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+        </script>
+</body>
+</html>
